@@ -54,7 +54,6 @@ jobs:
 
       - name: Upload Playwright Report (on failure)
         if: failure()
-        working-directory: frontend/__ui__
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
