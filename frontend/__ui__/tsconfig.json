@@ -1,5 +1,9 @@
  {
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+        "@Pom/*": ["src/pom/*"],
+    }
   }
 }
