@@ -30,7 +30,7 @@ jobs:
       - name: Start Backend Server
         run: yarn --cwd ../backend start &
       
-      - name: Start Frontend Server
+      - name: Start Frontend
         run: yarn start &
 
       - name: Wait for Frontend to be ready
