@@ -37,7 +37,9 @@ jobs:
         run: yarn start &
 
       - name: Run Playwright UI Tests
-        run: yarn test
+        run: |
+          cd ./__ui__
+          yarn test
 
       - name: Upload Playwright Report (on failure)
         if: failure()
