@@ -1,0 +1,89 @@
+:local(.container) {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+:local(.title) {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+:local(.addContainer) {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+:local(.input) {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+:local(.input):focus {
+  outline: 2px solid #007acc;
+  border-color: #007acc;
+}
+
+:local(.button) {
+  background-color: #007acc;
+  border: none;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+:local(.button):hover {
+  background-color: #005fa3;
+}
+
+:local(.error) {
+  color: #b00020;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+:local(.list) {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+:local(.item) {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  gap: 0.5rem;
+}
+
+:local(.completed) label {
+  text-decoration: line-through;
+  color: #777;
+}
+
+:local(.label) {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+:local(.deleteButton) {
+  background: none;
+  border: none;
+  color: #b00020;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0 0.3rem;
+}
