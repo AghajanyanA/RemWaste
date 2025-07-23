@@ -26,12 +26,15 @@ jobs:
 
       - name: Start Backend Server
         run: yarn --cwd ../backend start &
+        working-directory: backend
       
       - name: Wait for Backend to be ready
         run: npx wait-on http://localhost:3000 &
+        working-directory: backend
 
       - name: Install dependencies (frontend)
         run: yarn install --frozen-lockfile
+        working-directory: frontend
 
       - name: Start Frontend
         run: yarn start &
@@ -43,7 +46,7 @@ jobs:
 
       - name: Install Playwright dependencies
         run: yarn
-        working-directory: frontend/__ui__ 
+        working-directory: frontend/__ui__
 
       - name: Run Playwright UI Tests
         run: yarn test
@@ -51,6 +54,7 @@ jobs:
 
       - name: Upload Playwright Report (on failure)
         if: failure()
+        working-directory: frontend/__ui__
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
