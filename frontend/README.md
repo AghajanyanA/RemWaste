@@ -29,6 +29,9 @@ yarn dev
 ~~~
 Opens at: http://localhost:5173 (by default)
 
+## 🧪 How to run the UI tests?
+We have to navigate to UI tests directory at ```frontend/__ui__```, run the ```yarn``` command and start the tests with ```yarn test```.
+
 ## ✅ Features
 - Register and login with basic validation
 - Add, update, complete, and delete todos
