@@ -24,9 +24,6 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: .
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
       - name: Start Backend Server
         run: yarn --cwd ../backend start &
       
@@ -39,6 +36,14 @@ jobs:
       - name: Start Frontend
         run: yarn start &
         working-directory: frontend
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        working-directory: frontend/__ui__
+
+      - name: Install Playwright dependencies
+        run: yarn
+        working-directory: frontend/__ui__ 
 
       - name: Run Playwright UI Tests
         run: yarn test
