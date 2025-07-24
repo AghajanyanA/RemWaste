@@ -4,11 +4,11 @@ type InputFieldsType = { username?: string, password?: string, email?: string}
 
 export class AuthPage extends Container {
     private LOCATORS = {
-        input: (name: InputFieldsType) => `//input[@data-testid="${name}"]`,
-        submitButton: '//button[@data-testid="submit-button"]',
-        validationError: '//div[@role="alert"]',
-        switchLoginForm: '//button[@data-testid="switch-mode-button"]',
-        loginErrorMessage: '//div[@data-testid="error-message"]',
+        input: (name: InputFieldsType) => this.page.locator(`//input[@data-testid="${name}"]`),
+        submitButton: this.page.locator('//button[@data-testid="submit-button"]'),
+        validationError: this.page.locator('//div[@role="alert"]'),
+        switchLoginForm: this.page.locator('//button[@data-testid="switch-mode-button"]'),
+        loginErrorMessage: this.page.locator('//div[@data-testid="error-message"]'),
     }
 
     public async open() {
@@ -16,24 +16,24 @@ export class AuthPage extends Container {
     }
 
     public async fill(fieldName: InputFieldsType): Promise<void> {
-        fieldName.username && await this.page.fill(this.LOCATORS.input(fieldName), fieldName.username);
-        fieldName.password && await this.page.fill(this.LOCATORS.input(fieldName), fieldName.password);
-        fieldName.email && await this.page.fill(this.LOCATORS.input(fieldName), fieldName.email);
+        fieldName.username && await this.page.fill(fieldName.username, fieldName.username);
+        fieldName.password && await this.page.fill(fieldName.password, fieldName.password);
+        fieldName.email && await this.page.fill(fieldName.email, fieldName.email);
     }
 
     public async getAllValidationErrors(): Promise<string[]> {
-        return this.page.locator(this.LOCATORS.validationError).allInnerTexts()
+        return this.LOCATORS.validationError.allInnerTexts()
     }
 
     public getLoginErrorMessage(): Promise<string> {
-        return this.page.locator(this.LOCATORS.loginErrorMessage).innerText();
+        return this.LOCATORS.loginErrorMessage.innerText();
     }
 
     public async clickSubmitButton(): Promise<void> {
-        await this.page.click(this.LOCATORS.submitButton);
+        await this.LOCATORS.submitButton.click();
     }
 
     public async clickSwitchLoginFormButton(): Promise<void> {
-        await this.page.click(this.LOCATORS.switchLoginForm);
+        await this.LOCATORS.switchLoginForm.click;
     }
 }
