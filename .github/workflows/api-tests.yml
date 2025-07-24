@@ -1,4 +1,4 @@
-name: api-tests.yml
+name: Run API Tests
 on:
   pull_request:
 
