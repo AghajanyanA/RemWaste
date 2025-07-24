@@ -10,7 +10,10 @@ export class TodosPage extends Container {
         todoItem: this.page.locator('//li')
     }
 
-    public TodoItem = new TodoItem(this.LOCATORS.todoItem, this.page);
+    public async getTodoItems(): Promise<TodoItem[]> {
+        const items = await this.LOCATORS.todoList.locator('li').all();
+        return items.map(item => new TodoItem(item, this.page));
+    }
 
     public async getTitle(): Promise<string> {
         return this.LOCATORS.title.textContent();

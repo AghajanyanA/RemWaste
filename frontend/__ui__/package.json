@@ -11,5 +11,8 @@
     "test": "playwright test --headed",
     "test:headless": "playwright test",
     "report": "playwright show-report"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0"
   }
 }
