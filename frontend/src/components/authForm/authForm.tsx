@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './AuthForm.module.css';
+import styles from './authForm.module.css';
 import { login, register } from '../../api/axios';
 
 interface Props {
@@ -25,7 +25,6 @@ const AuthForm = ({ onAuthSuccess }: Props) => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Validate fields on change
   useEffect(() => {
     if (touchedUsername) {
       setUsernameError(

@@ -1,6 +1,7 @@
 import { Container } from "@Pom/container";
+import { Locator } from "@playwright/test";
 
-type InputFieldsType = { username?: string, password?: string, email?: string}
+type InputFieldsType = "Username" | "Password" | 'Email';
 
 export class AuthPage extends Container {
     private LOCATORS = {
@@ -9,24 +10,23 @@ export class AuthPage extends Container {
         validationError: this.page.locator('//div[@role="alert"]'),
         switchLoginForm: this.page.locator('//button[@data-testid="switch-mode-button"]'),
         loginErrorMessage: this.page.locator('//div[@data-testid="error-message"]'),
+        title: this.page.locator('//h2'),
     }
 
     public async open() {
         await this.page.goto('/');
     }
 
-    public async fill(fieldName: InputFieldsType): Promise<void> {
-        fieldName.username && await this.page.fill(fieldName.username, fieldName.username);
-        fieldName.password && await this.page.fill(fieldName.password, fieldName.password);
-        fieldName.email && await this.page.fill(fieldName.email, fieldName.email);
+    public async fill(fieldName: InputFieldsType, value: string): Promise<void> {
+        await this.LOCATORS.input(fieldName).fill(value)
     }
 
     public async getAllValidationErrors(): Promise<string[]> {
-        return this.LOCATORS.validationError.allInnerTexts()
+        return this.LOCATORS.validationError.allTextContents()
     }
 
-    public getLoginErrorMessage(): Promise<string> {
-        return this.LOCATORS.loginErrorMessage.innerText();
+    public async getLoginErrorMessage(): Promise<string> {
+        return this.LOCATORS.loginErrorMessage.textContent();
     }
 
     public async clickSubmitButton(): Promise<void> {
@@ -34,6 +34,18 @@ export class AuthPage extends Container {
     }
 
     public async clickSwitchLoginFormButton(): Promise<void> {
-        await this.LOCATORS.switchLoginForm.click;
+        await this.LOCATORS.switchLoginForm.click();
+    }
+
+    public async getTitle(): Promise<string> {
+        return this.LOCATORS.title.textContent();
+    }
+
+    public async getInput(fieldName: InputFieldsType): Promise<Locator> {
+        return this.LOCATORS.input(fieldName);
+    }
+
+    public async isVisible(): Promise<boolean> {
+        return this.page.isVisible('//main[//h2[contains(text(), "Login") or contains(text(), "Register")]]');
     }
 }

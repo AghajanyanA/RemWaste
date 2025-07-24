@@ -11,7 +11,13 @@ app.use(cors());
 app.use(express.json());
 
 
-const users: UsersType = [];
+const users: UsersType = [{
+  username: 'Test',
+  email: 'test@email.com',
+  password: '123456',
+  id: 0,
+  todos: [{id: 0, completed: false, title: 'Do the dishes'}]
+}];
 
 app.post('/register', (req, res) => {
   const { username, email, password } = req.body;
