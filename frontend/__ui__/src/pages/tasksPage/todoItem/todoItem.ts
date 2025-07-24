@@ -2,8 +2,8 @@ import { Component } from "@Pom/component";
 
 export class TodoItem extends Component {
     private LOCATORS = {
-        checkbox: this.page.locator('//input[type="checkbox"]'),
-        deleteButton: this.page.locator('//button'),
+        checkbox: this.locator.locator('//input[@type="checkbox"]'),
+        deleteButton: this.locator.locator('//button'),
     }
 
     public async toggleCheckbox(): Promise<void> {

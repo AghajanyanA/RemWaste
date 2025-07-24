@@ -7,11 +7,11 @@ export class TodosPage extends Container {
         addButton: this.page.locator('//button[@data-testid="add-todo-button"]'),
         newTaskInput: this.page.locator('//input[@data-testid="new-todo-input"]'),
         todoList: this.page.locator('//ul[@data-testid="todo-list"]'),
-        todoItem: this.page.locator('//li')
+        todoItem: this.page.locator('//li//label')
     }
 
     public async getTodoItems(): Promise<TodoItem[]> {
-        const items = await this.LOCATORS.todoList.locator('li').all();
+        const items = await this.LOCATORS.todoList.all();
         return items.map(item => new TodoItem(item, this.page));
     }
 
@@ -20,7 +20,7 @@ export class TodosPage extends Container {
     }
 
     public async getTodoListItems(): Promise<string[]> {
-        return this.LOCATORS.todoList.locator('li').allInnerTexts();
+        return this.LOCATORS.todoItem.allInnerTexts();
     }
     
     public async clickAddButton(): Promise<void> {
@@ -32,6 +32,6 @@ export class TodosPage extends Container {
     }
 
     public async getTodoListCount(): Promise<number> {
-        return this.LOCATORS.todoList.locator('li').count();
+        return this.LOCATORS.todoItem.count();
     }
 }
