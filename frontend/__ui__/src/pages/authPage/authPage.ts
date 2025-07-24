@@ -14,7 +14,7 @@ export class AuthPage extends Container {
     }
 
     public async open() {
-        await this.page.goto('/');
+        await this.page.goto('/', {waitUntil: 'networkidle'});
     }
 
     public async fill(fieldName: InputFieldsType, value: string): Promise<void> {

@@ -1,10 +1,10 @@
 import {test as base, expect } from "@playwright/test";
 import {AuthPage} from "./pages/authPage/authPage";
-import {TasksPage} from "./pages/tasksPage/tasksPage";
+import {TodosPage} from "./pages/tasksPage/todosPage";
 
 type OptionsType = {
     authPage: AuthPage,
-    tasksPage: TasksPage,
+    tasksPage: TodosPage,
 };
 
 const test = base.extend<OptionsType>({
@@ -12,7 +12,7 @@ const test = base.extend<OptionsType>({
         await use(new AuthPage(page));
     },
     tasksPage: async ({page}, use) => {
-        await use(new TasksPage(page));
+        await use(new TodosPage(page));
     },
 });
 
