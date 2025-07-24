@@ -24,10 +24,6 @@ jobs:
       - name: Install UI test dependencies
         working-directory: ./frontend/__ui__
         run: yarn install --frozen-lockfile
-
-      - name: Start backend
-        working-directory: ./backend
-        run: yarn start &
         
       - name: Start frontend
         working-directory: ./frontend
