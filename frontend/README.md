@@ -39,3 +39,4 @@ We have to navigate to UI tests directory at ```frontend/__ui__```, run the ```y
 - No DB (memory only)
 - Built with hooks + SCSS modules
 - Easy to test with Playwright
+- Integrated to GitHub Actions
