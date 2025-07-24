@@ -1,6 +1,5 @@
 import { Container } from "@Pom/container";
 import { TodoItem } from "./todoItem/todoItem";
-import { Locator } from "@playwright/test";
 
 export class TasksPage extends Container {
     private LOCATORS = {
@@ -14,7 +13,7 @@ export class TasksPage extends Container {
     public TodoItem = new TodoItem(this.LOCATORS.todoItem, this.page);
 
     public async getTitle(): Promise<string> {
-        return this.LOCATORS.title.innerText();
+        return this.LOCATORS.title.textContent();
     }
 
     public async getTodoListItems(): Promise<string[]> {
@@ -22,7 +21,7 @@ export class TasksPage extends Container {
     }
     
     public async clickAddButton(): Promise<void> {
-        this.LOCATORS.addButton.click;
+        await this.LOCATORS.addButton.click();
     }
 
     public async fillNewTaskInput(task: string): Promise<void> {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { addTodo, deleteTodo, fetchTodos, updateTodo } from '../../api/axios';
-import styles from './TodoList.module.css';
+import styles from './todoList.module.css';
 import type { TodoType } from '../../types';
 
 interface Props {
