@@ -1,7 +1,7 @@
 import { Container } from "@Pom/container";
 import { TodoItem } from "./todoItem/todoItem";
 
-export class TasksPage extends Container {
+export class TodosPage extends Container {
     private LOCATORS = {
         title: this.page.locator('//h2'),
         addButton: this.page.locator('//button[@data-testid="add-todo-button"]'),
