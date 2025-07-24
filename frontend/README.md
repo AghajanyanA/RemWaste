@@ -32,6 +32,13 @@ Opens at: http://localhost:5173 (by default)
 ## 🧪 How to run the UI tests?
 We have to navigate to UI tests directory at ```frontend/__ui__```, run the ```yarn``` command and start the tests with ```yarn test```.
 
+## Now how do I run backend tests?
+Almost pretty the same steps, but this time, you have to navigate to backend folder:
+```
+cd backend
+yarn test
+```
+
 ## ✅ Features
 - Register and login with basic validation
 - Add, update, complete, and delete todos
@@ -39,3 +46,4 @@ We have to navigate to UI tests directory at ```frontend/__ui__```, run the ```y
 - No DB (memory only)
 - Built with hooks + SCSS modules
 - Easy to test with Playwright
+- Integrated to GitHub Actions

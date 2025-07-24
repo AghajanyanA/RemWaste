@@ -13,7 +13,6 @@ app.use(express.json());
 
 const users: UsersType = [];
 
-// Register
 app.post('/register', (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -33,7 +32,6 @@ app.post('/register', (req, res) => {
   res.json({ message: 'Registered successfully' });
 });
 
-// Login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -48,7 +46,6 @@ app.post('/login', (req, res) => {
   res.json(userWithoutPassword);
 });
 
-// Get user's todos
 app.get('/todos', (req, res) => {
   const { username } = req.query;
   if (!username) return res.status(400).json({ message: 'Missing username' });
@@ -59,7 +56,6 @@ app.get('/todos', (req, res) => {
   res.json(user.todos);
 });
 
-// Add a todo for a user
 app.post('/todos', (req, res) => {
   const { username, title } = req.body;
   if (!username || !title) return res.status(400).json({ message: 'Missing fields' });
@@ -76,7 +72,6 @@ app.post('/todos', (req, res) => {
   res.json(newTodo);
 });
 
-// Edit a todo
 app.put('/todos/:todoId', (req, res) => {
   const { todoId } = req.params;
   const { username, title, completed } = req.body;
@@ -94,7 +89,6 @@ app.put('/todos/:todoId', (req, res) => {
   res.json(todo);
 });
 
-// Delete a todo
 app.delete('/todos/:todoId', (req, res) => {
   const { todoId } = req.params;
   const { username } = req.query;
@@ -112,3 +106,5 @@ app.delete('/todos/:todoId', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+module.exports = { app, users }
